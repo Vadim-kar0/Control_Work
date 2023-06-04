@@ -15,3 +15,81 @@
 [“Hello”, “2”, “world”, “:-)”] → [“2”, “:-)”]
 [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 [“Russia”, “Denmark”, “Kazan”] → []
+
+
+Пользователь вводит нужную ему длину массива преобразуем строку в число:
+//
+Console.Write("Введите длину массива: ");
+int length = Convert.ToInt32(Console.ReadLine());
+//
+Создаём массив:
+//
+string[] array = new string[length];
+//
+Создаём метод с помощью которого пользователь запишет данные в каждую ячейку массива:
+//
+void FillArray(string[] array)
+{
+for (int i = 0; i < array.Length; i++)
+{
+    Console.Write($"Введите {i+1} элемент массива: ");
+    array[i] = Console.ReadLine();
+}
+}
+//
+Создаём метод с помощью которого пользователь увидит массив в консоли:
+//
+void PrintArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]} ");
+    }
+}
+//
+Далее программа с помощью этих методов заполнит и выведет в консоль массив:
+//
+FillArray(array);
+PrintArray(array);
+//
+Следующий метод выполняет три функции:
+Первая находит длину нового массива:
+
+//
+string[] GetResultArray(string[] array)
+{
+    int lengthNewArray = 0; // счетчик размера нового массива
+    string memory = " ";
+    for (int i = 0; i < array.Length; i++)
+    {
+        memory = array[i];
+        if (memory.Length<=3)
+        {
+            lengthNewArray++;
+        }
+    }
+//
+Вторая часть создаёт новый массив нужного размера
+//
+string[] result = new string[lengthNewArray];
+//
+Третья часть заполняет массив согласно условию задачи
+//
+  int j = 0; // счётчик для нового массива
+    for (int i = 0; i < array.Length; i++)
+    {
+        memory = array[i];
+        if (memory.Length<=3)
+        {
+             result[j]= memory;
+             j++;
+        }
+    }
+    return result;
+}
+//
+Программа применяет данный метод используя массив записанный пользователем и выводит массив отвечающий условиям задачи в консоль
+//
+string[] newArray = GetResultArray(array);
+PrintArray(newArray);
+//
